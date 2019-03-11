@@ -190,8 +190,9 @@ Nizami Alizade    nizamializade85@gmail.com
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="table" style="    padding: 0px 46px;">
+                    <form  action="/call" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="table" style="padding: 0px 46px;">
                             <div class="row" >
                                 <div class="cell" style="color: white;font-family: arial;"><label for="call_fullname">Ad Soyad</label></div>
                                 <div class="cel" style="padding-left: 76px"><input type="text" name="name"  class="form-control"></div>
@@ -203,13 +204,10 @@ Nizami Alizade    nizamializade85@gmail.com
                             </div>
 
                         </div>
+                        <input type="submit">
                     </form>
                 </div>
-                <div class="modal-footer" style="border: none;">
-                    <button style="background-color: #F28F00" type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Zənginizi gözləyirəm
-                    </button>
-                </div>
+             
             </div>
         </div>
     </div>
@@ -319,9 +317,10 @@ Nizami Alizade    nizamializade85@gmail.com
         </div>
     </div>
     <div style="position: fixed;font-size: 50px;right: 18px;
-    bottom: 54px;color: green" class="fixed-bottoms"><a style="color: green"" href="https://wa.me/994502664021">
+    bottom: 54px;color: green" class="fixed-bottoms"><a style="color: green" href="https://wa.me/994502664021">
         <i  class="fab fa-whatsapp"></i>
         </a></div>
+    {{$numberq->id}}
     </div>
 
     <!-- Vendor -->

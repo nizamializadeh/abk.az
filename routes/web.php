@@ -11,23 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
-
-Route::post('/mail', 'frontend\SiteController@mail')->name('mail');
-
-Route::get('/about', 'frontend\SiteController@about')->name('about');
-
-
-
-Auth::routes();
-
-
-
-
 Route::post('set-status','backend\AdminController@setStatus')->name('setStatus');
 
+
+Route::get('/', 'frontend\SiteController@index')->name('index');
+Route::get('/about', 'frontend\SiteController@about')->name('about');
+Route::get('/fag', function () {return view('frontend.fag');});
+Route::post('/mail', 'frontend\SiteController@mail')->name('mail');
+Route::post('/call', 'frontend\SiteController@call')->name('call');
+Auth::routes();
 
 Route::group(['middleware' => 'admin','prefix' => 'admin'],function (){
     Route::get('dashboard','backend\AdminController@dashboard')->name('dashboard');
@@ -36,6 +28,7 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'],function (){
         'slider' => 'backend\SliderController',
         'about' => 'backend\AboutController',
         'testimonial' => 'backend\TestimonialsController',
+        'callme' => 'backend\CallmeController',
 
     ]);
 });

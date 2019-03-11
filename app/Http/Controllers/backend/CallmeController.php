@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\About;
-use Intervention\Image\Facades\Image;
+use App\Callme;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AboutController extends Controller
+class CallmeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class AboutController extends Controller
     public function index()
     {
         $settings = $this->getSettingsForTable();
-        $abouts=About::all();
-        return view('backend.about.index',compact('settings','abouts'));
+        $calls=Callme::all();
+        return view('backend.main.index',compact('calls','settings'));
     }
 
     /**
@@ -48,11 +47,9 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(About $about)
+    public function show($id)
     {
-        $settings = $this->getSettingsForForm();
-        $settings['title'] = 'Edit about';
-        return view('backend.about.edit',compact('about','settings'));
+        //
     }
 
     /**
@@ -61,7 +58,10 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
+    public function edit($id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.
@@ -70,22 +70,10 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,About $about)
+    public function update(Request $request, $id)
     {
-        $file = $request->file('image');
-        if ($request->hasFile('image')){
-            $name = rand(). "." . $file->getClientOriginalExtension();
-            $file->move(public_path('photo'), $name);
-            $about->image = $name;
-            $about->header = $request->header;
-            $about->content = $request->contents;
-            $about->number = $request->number;
-            $about->update();
-            $request->session()->flash(str_slug('Create testimonail','-'),'Testimonail created');
-                    return back();
-        }
+        //
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -98,29 +86,22 @@ class AboutController extends Controller
         //
     }
 
+
     private function getSettingsForTable()
     {
         return  [
-            'title' => 'Abouts',
-            'table' => 'about',
+            'title' => 'Call',
+            'table' => 'Call',
             'createButton' => [
-                'text' => " About",
-                'url' => route('about.index')
+                'text' => " Call",
+                'url' => route('callme.index')
             ],
             'columns' => [
                 [
                     'label' => 'ID',
                 ],
                 [
-                    'label' => 'photo',
-                ]
-                ,
-                [
-                    'label' => 'header',
-                ]
-                ,
-                [
-                    'label' => 'content',
+                    'label' => 'name',
                 ]
                 ,
                 [
@@ -130,18 +111,4 @@ class AboutController extends Controller
             ],
         ];
     }
-
-    private  function  getSettingsForForm()
-    {
-        return [
-            'title' => 'Edit about',
-            'flashSessionKey' => 'about',
-            'flashSessionValue' => 'About edit',
-            'backButton' => [
-                'text' => "Back",
-                'url' => route('about.index')
-            ]
-        ];
-    }
-
 }

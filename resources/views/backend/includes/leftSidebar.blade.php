@@ -14,7 +14,6 @@
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
-                    <li><a href="/profil/edit/{{Auth::user()->id}}"><i class="material-icons">person</i>Profile</a></li>
 
                     <li>
                         <a  href="{{ route('logout') }}"
@@ -36,16 +35,17 @@
         <div class="menu">
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
-                <li class="{{request()->routeIs('dashboard') ? 'active' : ''}}">
-                    <a href="{{route('dashboard')}}">
+                <li class="{{request()->routeIs('callme') ? 'active' : ''}}">
+                    <a href="{{route('callme.index')}}">
                         <i class="material-icons">dashboard</i>
                         <span>Dashboard</span>
                     </a>
                 </li>
+
                 <li class="{{(request()->routeIs('author.index') || request()->routeIs('tag.index') || request()->routeIs('category.index')) ? 'active' : ''}}">
                     <a href="javascript:void(0);" class="menu-toggle ">
                         <i class="material-icons">fiber_new</i>
-                        <span>News managment</span>
+                        <span>Site managment</span>
                     </a>
                     <ul class="ml-menu">
                         {{--@if ( auth()->user()->role == 1)--}}
@@ -71,7 +71,9 @@
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy; {{ now()->year }} <a href="javascript:void(0);">NewsPortal</a>.
+            &copy; {{ now()->year }} <a href="javascript:void(0);">Abk.az</a>
+            	<p>Site by <a target="_blank" href="https://www.facebook.com/Nizamializadah">Nizami Alizade</a></p>
+
         </div>
     </div>
     <!-- #Footer -->

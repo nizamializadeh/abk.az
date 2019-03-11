@@ -22,11 +22,11 @@
                  <div class="col-sm-6">
             <div class="form-group form-float">
                 <div class="form-line">
-                    <input name="image" type="file" required class="form-control  post-image" id="postImage" >
+                    <input name="image" style="visibility: hidden" type="file" required class="form-control  post-image" id="postImage" >
 
-                    {{--<label for="postImage" style="cursor: pointer">--}}
-                    {{--<img class="img-responsive thumbnail post-img-preview" src="{{asset('admin/images/image-gallery/thumb/thumb-15.jpg')}}">--}}
-                    {{--</label>--}}
+                    <label for="postImage" style="cursor: pointer">
+                    <img class="img-responsive thumbnail post-img-preview" src="{{asset('photo/'.$about->image)}}">
+                    </label>
                 </div>
             </div>
         </div>

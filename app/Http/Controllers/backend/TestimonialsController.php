@@ -75,7 +75,7 @@ class TestimonialsController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -111,8 +111,9 @@ class TestimonialsController extends Controller
             $testimonial->workplace = $request->workplace;
             $testimonial->update();
             $request->session()->flash(str_slug('Create testimonail','-'),'Testimonail created');
-            return back();
         }
+        return back();
+
     }
 
     /**
