@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine On 
+   RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+#<VirtualHost 127.0.0.1:8000>
+#    DocumentRoot "C:\Users\Nizami\Music\code\abk.ae\public"
+#    DirectoryIndex index.php
+#    <Directory "C:\Users\Nizami\Music\code\abk.ae\public">
+#        Options All
+#        AllowOverride All
+#        Order Allow,Deny
+#        Allow from all
+#    </Directory>
+#</VirtualHost>
